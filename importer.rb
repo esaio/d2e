@@ -1,19 +1,14 @@
 require 'pp'
 
 class Importer
-  def initialize(client, dir_path)
-    @client = client
+  def initialize(config:, users:)
+    @config = config
+    @users  = users
+
+    # FIXME
     @files = Dir.glob File.expand_path(File.join(dir_path, '*.md'))
   end
-  attr_accessor :client, :files
-
-  def wait_for(seconds)
-    (seconds / 10).times do
-      print '.'
-      sleep 10
-    end
-    puts
-  end
+  attr_accessor :config, :files,
 
   def import(dry_run: true, start_index: 0)
      files.sort_by { |file| File.basename(file, '.*').to_i }.each.with_index do |file, index|
@@ -50,5 +45,23 @@ class Importer
         exit 1
       end
     end
+  end
+
+  private
+
+  def client
+    @client ||= Esa::Client.new(
+      access_token: config['access_token'],
+      current_team: config['team_name'],
+      api_endpoint: config['api_endpoint']
+    )
+  end
+
+  def wait_for(seconds)
+    (seconds / 10).times do
+      print '.'
+      sleep 10
+    end
+    puts
   end
 end

@@ -2,6 +2,12 @@
 
 DocBaseからesa.ioへのインポートスクリプトのサンプルです
 
+# TODO
+
+- [ ] userのマッピング
+- [ ] 画像、添付ファイルの再アップロード
+- [ ] 動作確認
+
 # スクリプトを使った移行の流れ
 
 ## スクリプトの用意
@@ -10,9 +16,14 @@ DocBaseからesa.ioへのインポートスクリプトのサンプルです
 $ git clone https://github.com/fukayatsu/d2e.git
 $ bundle install
 $ cp config.sample.yml config.yml
+$ cp users.sample.yml  users.yml
 ```
 
-ここで、 `config.yml` にAPIトークンや設定を記述し、必要に応じてimporter.rbの内容を変更します
+ここで、
+
+- `config.yml` にAPIトークンや設定を記述します
+- `users.yml` にdocbase上のユーザー名とesa上のユーザー名の紐付けを記述します
+- 必要に応じてimporter.rbの内容を変更します。
 
 ## スクリプトの動作確認(Dry Run)
 
