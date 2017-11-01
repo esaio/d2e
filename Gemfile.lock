@@ -1,0 +1,30 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    coderay (1.1.2)
+    esa (1.12.0)
+      faraday (~> 0.9)
+      faraday_middleware
+      mime-types (~> 2.6)
+      multi_xml (~> 0.5.5)
+    faraday (0.13.1)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.12.2)
+      faraday (>= 0.7.4, < 1.0)
+    method_source (0.9.0)
+    mime-types (2.99.3)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
+    pry (0.11.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  esa
+  pry
+
+BUNDLED WITH
+   1.15.4
