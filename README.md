@@ -19,8 +19,9 @@ $ cp config.sample.yml config.yml
 $ cp users.sample.yml  users.yml
 ```
 
-ここで、
+次に、
 
+- JSON形式でダウンロードした3つのzipを全てzipディレクトリに配置します
 - `config.yml` にAPIトークンや設定を記述します
 - `users.yml` にdocbase上のユーザー名とesa上のユーザー名の紐付けを記述します
 - 必要に応じてimporter.rbの内容を変更します。
