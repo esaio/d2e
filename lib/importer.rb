@@ -6,12 +6,13 @@ require_relative './converter'
 class Importer
   def initialize(config)
     @config     = config
-    @converter  = Converter.new(screen_names)
     @json_files = Dir.glob File.expand_path(File.join(config['json_dir'], '*.json'))
   end
-  attr_reader :config, :converter, :json_files
+  attr_reader :config, :json_files
 
   def import(dry_run: true, start_index: 0)
+    converter = Converter.new(dry_run: dry_run, client: client, config: config, screen_names: screen_names)
+
     json_files.sort_by { |file| File.basename(file, '.*').to_i }.each.with_index do |file, index|
       next unless index >= start_index
 

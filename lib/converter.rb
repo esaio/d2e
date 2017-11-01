@@ -13,7 +13,7 @@ class Converter < BaseConverter
       created_at: #{content['created_at']}
       user: #{content['user']['name']}
 
-      #{content['body']}
+      #{reupload content['body']}
     EOT
 
     {
@@ -27,19 +27,17 @@ class Converter < BaseConverter
     }
   end
 
-  def comments_params(content)
-    content['comments'].map do |comment|
-      body_md = <<~EOT
-        created_at: #{comment['created_at']}
-        user_id: #{comment['user_id']}
+  def comments_params(comment_content)
+    body_md = <<~EOT
+      created_at: #{comment_content['created_at']}
+      user_id: #{comment_content['user_id']}
 
-        #{comment['encrypted_comment']}
-      EOT
+      #{reupload comment_content['encrypted_comment']}
+    EOT
 
-      {
-        body_md: body_md,
-        user:    screen_name_for([content['user']['name']])
-      }
-    end
+    {
+      body_md: body_md,
+      # user:    screen_name_for([comment)content['user']['name']])
+    }
   end
 end
