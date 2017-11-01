@@ -1,26 +1,31 @@
 require 'pp'
+require 'json'
 
 class Importer
   def initialize(config:, users:)
     @config = config
     @users  = users
 
-    # FIXME
-    @files = Dir.glob File.expand_path(File.join(dir_path, '*.md'))
+    @json_files = Dir.glob File.expand_path(File.join(config['json_dir'], '*.json'))
   end
-  attr_accessor :config, :files,
+  attr_reader :config, :json_files
 
   def import(dry_run: true, start_index: 0)
-     files.sort_by { |file| File.basename(file, '.*').to_i }.each.with_index do |file, index|
+    # TODO: memberのマッピングをチェック。docbaseとesaの両方のAPIを叩く必要がありそう
+
+    json_files.sort_by { |file| File.basename(file, '.*').to_i }.each.with_index do |file, index|
       next unless index >= start_index
 
+      content = JSON.parse(File.read(file))
+
       params = {
-        name:     File.basename(file, '.*'),
-        category: "Imports/DocBase",
-        body_md:  File.read(file),
-        wip:      false,
+        name:     content['title'],
+        category: "Imports/DocBase", # TODO: gruopを考慮
+        tags:      content['tags'].map{ |tag| tag.values.first },
+        body_md:   content['body'], # TODO: 画像とファイルの再アップロード, url、作成者を含める
+        wip:      content['draft'],
         message:  '[skip notice] Imported from DocBase',
-        user:     'esa_bot',  # 記事作成者上書き: owner権限が必要
+        user: @users[content['user']['name']] || 'esa_bot'
       }
 
       if dry_run
