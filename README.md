@@ -26,7 +26,6 @@ $ cp config.sample.yml config.yml
 - JSON形式でダウンロードした3つのzipを全てzipディレクトリに配置します
   - esaでは同じチーム内での記事の閲覧権限は全員同じなので、全員が閲覧できてまずいドキュメントはこの段階で削除して下さい
 - `config.yml` にAPIトークンや設定を記述します
-- `users.yml` にdocbase上のユーザー名とesa上のユーザー名の紐付けを記述します
 - 必要に応じてimporter.rbの内容を変更します。
   - docbase上のデータをesa上のデータに変更する部分を主に調整していただくと良さそうです。
     - => https://github.com/fukayatsu/d2e/blob/master/lib/converter.rb
