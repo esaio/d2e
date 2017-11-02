@@ -1,0 +1,10 @@
+# 移行先のesa.ioのチーム名
+esa_team_name: foo-test
+
+# /user/tokens/new から read/write の両方が有効なtokenを作成
+esa_access_token: xxx
+
+# docbaseのデータをJSON形式でダウンロードし、展開したフォルダのpath
+file_dir:  tmp/corp2_file001_xxx
+image_dir: tmp/corp2_image001_xxx
+json_dir:  tmp/corp2_json001_xxx
