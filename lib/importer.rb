@@ -36,7 +36,10 @@ class Importer
         exit 1
       end
 
-      # TODO: create comment
+      post_number = response.body['number']
+      params[:comments].each do |comment_param|
+        client.create_comment(post_number, comment_param)
+      end
     end
   end
 

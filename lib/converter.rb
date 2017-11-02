@@ -13,6 +13,7 @@ class Converter < BaseConverter
       created_at: #{content['created_at']}
       user: #{content['user']['name']}
 
+
       #{reupload content['body']}
     EOT
 
@@ -31,6 +32,7 @@ class Converter < BaseConverter
     body_md = <<~EOT
       created_at: #{comment_content['created_at']}
       user_id: #{comment_content['user_id']}
+
 
       #{reupload comment_content['encrypted_comment']}
     EOT
