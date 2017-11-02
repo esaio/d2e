@@ -29,6 +29,8 @@ class Converter < BaseConverter
   end
 
   def comments_params(comment_content)
+    # NOTE: DocBaseのエクスポート機能にコメントの内容が暗号化されたまま出力される不具合があり、修正待ち
+
     body_md = <<~EOT
       created_at: #{comment_content['created_at']}
       user_id: #{comment_content['user_id']}
@@ -39,7 +41,7 @@ class Converter < BaseConverter
 
     {
       body_md: body_md,
-      # user:    screen_name_for([comment)content['user']['name']])
+      # user:    screen_name_for(comment_content['user']['name'])
     }
   end
 end
