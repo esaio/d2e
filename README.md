@@ -13,6 +13,8 @@ DocBaseからesa.ioへのインポートスクリプトのサンプルです
 
 ## スクリプトの用意
 
+※ スクリプトの作成・動作確認はRuby2.4.1で行っております
+
 ```
 $ git clone https://github.com/fukayatsu/d2e.git
 $ bundle install
@@ -26,6 +28,8 @@ $ cp config.sample.yml config.yml
 - `config.yml` にAPIトークンや設定を記述します
 - `users.yml` にdocbase上のユーザー名とesa上のユーザー名の紐付けを記述します
 - 必要に応じてimporter.rbの内容を変更します。
+  - docbase上のデータをesa上のデータに変更する部分を主に調整していただくと良さそうです。
+    - => https://github.com/fukayatsu/d2e/blob/master/lib/converter.rb
 
 ## スクリプトの動作確認(Dry Run)
 

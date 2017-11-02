@@ -29,6 +29,8 @@ class Converter < BaseConverter
   end
 
   def comments_params(comment_content)
+    # NOTE: DocBaseのJSONエクスポート機能にコメントが暗号化されたまま出力される不備があり、
+    # 問い合わせた結果修正待ちの状態
     body_md = <<~EOT
       created_at: #{comment_content['created_at']}
       user_id: #{comment_content['user_id']}
@@ -39,7 +41,7 @@ class Converter < BaseConverter
 
     {
       body_md: body_md,
-      # user:    screen_name_for([comment)content['user']['name']])
+      user:    screen_name_for(comment_content['user']['name'])
     }
   end
 end
