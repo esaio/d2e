@@ -41,7 +41,7 @@ class Converter < BaseConverter
 
     {
       body_md: body_md,
-      user:    screen_name_for(comment_content['user']['name'])
+      # user:    screen_name_for(comment_content['user']['name'])
     }
   end
 end
