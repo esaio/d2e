@@ -24,7 +24,7 @@ class Converter < BaseConverter
       body_md:  body_md,
       wip:      content['draft'],
       message:  '[skip notice] Imported from DocBase',
-      user:     screen_name_for([content['user']['name']])
+      user:     screen_name_for(content['user']['name'])
     }
   end
 
