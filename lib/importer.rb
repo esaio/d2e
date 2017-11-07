@@ -33,6 +33,7 @@ class Importer
         puts "created: #{response.body["full_name"]}"
       else
         puts "failure with status: #{response.status}"
+        p response.body
         exit 1
       end
 
