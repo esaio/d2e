@@ -17,8 +17,8 @@ class Converter < BaseConverter
       #{reupload content['body']}
     EOT
 
-    name = content['title']
-    name = 'NO_TITLE' if name.to_s == ''
+    name = content['title'].to_s.gsub(/\/*$/, '')
+    name = 'NO_TITLE' if name == ''
 
     {
       name:     name,
