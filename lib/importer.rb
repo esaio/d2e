@@ -32,6 +32,7 @@ class Importer
       when 201
         puts "created: #{response.body["full_name"]}"
       else
+        p file
         puts "failure with status: #{response.status}"
         p response.body
         exit 1
