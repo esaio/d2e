@@ -17,8 +17,11 @@ class Converter < BaseConverter
       #{reupload content['body']}
     EOT
 
+    name = content['title']
+    name = 'NO_TITLE' if name.to_s == ''
+
     {
-      name:     content['title'],
+      name:     name,
       category: category,
       tags:     content['tags'].map{ |tag| tag['name'] },
       body_md:  body_md,
