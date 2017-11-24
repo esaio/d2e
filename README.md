@@ -20,7 +20,7 @@ DocBase上でメンバー名を調整したあとで、JSON形式でファイル
 ※ スクリプトの作成・動作確認はRuby2.4.1で行っております
 
 ```
-$ git clone https://github.com/fukayatsu/d2e.git
+$ git clone https://github.com/esaio/d2e.git
 $ bundle install
 $ cp config.sample.yml config.yml
 ```
@@ -32,7 +32,7 @@ $ cp config.sample.yml config.yml
 - `config.yml` にAPIトークンや設定を記述します
 - 必要に応じて `lib/converter.rb` の内容を変更します。
   - docbase上のデータをesa上のデータに変更する部分を主に調整していただくと良さそうです。
-    - => https://github.com/fukayatsu/d2e/blob/master/lib/converter.rb
+    - => https://github.com/esaio/d2e/blob/master/lib/converter.rb
 
 ## スクリプトの動作確認(Dry Run)
 
