@@ -38,14 +38,10 @@ class Importer
         exit 1
       end
 
-      # NOTE: DocBaseのJSONエクスポート機能にコメントが暗号化されたまま出力される不備があり、
-      # 問い合わせた結果修正待ちの状態
-      # このままインポート処理をしても読めないコメントがつくので、一旦コメントアウト
-
-      # post_number = response.body['number']
-      # params[:comments].each do |comment_param|
-      #   client.create_comment(post_number, comment_param)
-      # end
+      post_number = response.body['number']
+      params[:comments].each do |comment_param|
+        client.create_comment(post_number, comment_param)
+      end
     end
   end
 
